@@ -1,0 +1,5 @@
+*.log
+*.sqlite3
+*.swp
+*.swo
+*.pyc
