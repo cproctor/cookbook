@@ -39,7 +39,7 @@ friends over on Thursday and we want to have turnips and ice cream.
     ./manage.py list_menus
 
     Thursday dinner
-    ===============
+    ======================================================================
     to serve 10
     - 2 * Ice Cream
     - 3 * Miso Roasted Japanese Turnips
@@ -50,11 +50,11 @@ additional options.
     ./manage.py shop thursday
 
     Thursday dinner
-    ===============
+    ======================================================================
     to serve 10
     - 2 * Ice Cream
     - 3 * Miso Roasted Japanese Turnips
-    ---------------
+    ----------------------------------------------------------------------
     - 4.0 cup of cream
     - 2.0 cup of milk
     - 1.32 cup of sugar
