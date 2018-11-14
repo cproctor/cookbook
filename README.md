@@ -14,9 +14,10 @@ A simple command-line Django app for managing recipes and menus.
 
 ## Usage
 
-Recipes are imported via YAML files--see examples in `recipe_sources`
-for the format. You imported all the recipes during installation with
-`import_recipes`; individual recipes can be imported with `import_recipe`.
+Recipes are imported via YAML files storied in `recipe_sources`. 
+You imported the built-in the recipes during installation with
+`import_recipes`. Individual recipes can later be imported with 
+`import_recipe`.
 
 List all the recipes (add `--help` to see
 options you can use to filter the view):
@@ -38,8 +39,8 @@ friends over on Thursday and we want to have turnips and ice cream.
     ./manage.py list_menus
 
     Thursday dinner
-    ===============
-    for 10
+    ======================================================================
+    to serve 10
     - 2 * Ice Cream
     - 3 * Miso Roasted Japanese Turnips
 
@@ -49,11 +50,11 @@ additional options.
     ./manage.py shop thursday
 
     Thursday dinner
-    ===============
+    ======================================================================
     to serve 10
     - 2 * Ice Cream
     - 3 * Miso Roasted Japanese Turnips
-    ---------------
+    ----------------------------------------------------------------------
     - 4.0 cup of cream
     - 2.0 cup of milk
     - 1.32 cup of sugar
@@ -62,6 +63,8 @@ additional options.
     - 6.0 pound of turnips
     - 9.0 tablespoon of miso paste
     - 9.0 tablespoon of olive oil
+    
+Now a view more suitable for cooking.
 
     ./manage.py cook thursday
     
@@ -73,15 +76,15 @@ additional options.
     ----------------------------------------------------------------------
     Ingredients
     - 2 * Ice Cream
-        -   4.0 cup cream (heavy)
-    -   2.0 cup milk (whole)
-    -   1.32 cup sugar
-    -   0.25 teaspoon salt (fine sea)
-    -   12.0 count egg (yolks (large))
+      - 4.0 cup cream (heavy)
+      - 2.0 cup milk (whole)
+      - 1.32 cup sugar
+      - 0.25 teaspoon salt (fine sea)
+      - 12.0 count egg (yolks (large))
     - 3 * Miso Roasted Japanese Turnips
-    -   6.0 pound turnips (rinsed and cut in half – green parts reserved)
-    -   9.0 tablespoon miso paste (white)
-    -   9.0 tablespoon olive oil
+      - 6.0 pound turnips (rinsed and cut in half – green parts reserved)
+      - 9.0 tablespoon miso paste (white)
+      - 9.0 tablespoon olive oil
     ----------------------------------------------------------------------
     Ice Cream
      - In a small pot, simmer heavy cream, milk, sugar and salt until
