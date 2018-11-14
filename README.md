@@ -75,15 +75,15 @@ Now a view more suitable for cooking.
     ----------------------------------------------------------------------
     Ingredients
     - 2 * Ice Cream
-        -   4.0 cup cream (heavy)
-    -   2.0 cup milk (whole)
-    -   1.32 cup sugar
-    -   0.25 teaspoon salt (fine sea)
-    -   12.0 count egg (yolks (large))
+      - 4.0 cup cream (heavy)
+      - 2.0 cup milk (whole)
+      - 1.32 cup sugar
+      - 0.25 teaspoon salt (fine sea)
+      - 12.0 count egg (yolks (large))
     - 3 * Miso Roasted Japanese Turnips
-    -   6.0 pound turnips (rinsed and cut in half – green parts reserved)
-    -   9.0 tablespoon miso paste (white)
-    -   9.0 tablespoon olive oil
+      - 6.0 pound turnips (rinsed and cut in half – green parts reserved)
+      - 9.0 tablespoon miso paste (white)
+      - 9.0 tablespoon olive oil
     ----------------------------------------------------------------------
     Ice Cream
      - In a small pot, simmer heavy cream, milk, sugar and salt until
