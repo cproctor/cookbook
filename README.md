@@ -62,6 +62,8 @@ additional options.
     - 6.0 pound of turnips
     - 9.0 tablespoon of miso paste
     - 9.0 tablespoon of olive oil
+    
+Now a view more suitable for cooking.
 
     ./manage.py cook thursday
     
