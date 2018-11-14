@@ -46,6 +46,7 @@ class Menu(models.Model):
     def cooking_view(self, width=70):
         wrapper = TextWrapper(width=width)
         listWrapper = TextWrapper(width=width, initial_indent=' - ', subsequent_indent='   ')
+        subListWrapper = TextWrapper(width=width, initial_indent='   - ', subsequent_indent='     ')
         text = []
         text.append(self.__str__(width))
         text.append('-'*width)
@@ -54,7 +55,7 @@ class Menu(models.Model):
             scale = ceil(self.servings / r.servings)
             text += listWrapper.wrap("{} * {}".format(scale, r))
             for ri in r.ingredients.all():
-                text += listWrapper.wrap("  {} {} {}{}".format(
+                text += subListWrapper.wrap("{} {} {}{}".format(
                     ri.quantity * scale,
                     ri.unit,
                     ri.ingredient,
