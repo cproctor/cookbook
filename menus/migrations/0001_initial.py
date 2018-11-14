@@ -20,5 +20,6 @@ class Migration(migrations.Migration):
                 ('servings', models.IntegerField()),
                 ('recipes', models.ManyToManyField(related_name='menus', to='recipes.Recipe')),
             ],
+            options={'ordering': ['name']},
         ),
     ]

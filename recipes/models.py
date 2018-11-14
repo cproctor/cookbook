@@ -11,6 +11,19 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def get_by_name(self, name):
+        "Looks up a recipe by fuzzy-matched name, handling errors with informative messages"
+        try:       
+            return Recipe.objects.get(name__contains=name)
+        except Recipe.DoesNotExist:
+            raise RecipeDoesNotExist("No recipe found with name '{}'".format(name))
+        except Recipe.MultipleObjectsReturned:
+            raise Recipe.MultipleObjectsReturned("More than one recipe found with name '{}'".format(name))
+
+    class Meta:
+        ordering=['name']
+
 class IngredientCategory(models.Model):
     name = models.CharField(max_length=100)
 

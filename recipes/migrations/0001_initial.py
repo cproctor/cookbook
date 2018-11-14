@@ -53,6 +53,7 @@ class Migration(migrations.Migration):
                 ('servings', models.IntegerField()),
                 ('notes', models.TextField(blank=True, null=True)),
             ],
+            options={'ordering': ['name']},
         ),
         migrations.CreateModel(
             name='RecipeIngredient',

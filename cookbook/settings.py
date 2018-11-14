@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'zdcp_recipes.wsgi.application'
+WSGI_APPLICATION = 'cookbook.wsgi.application'
 
 
 # Database

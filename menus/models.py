@@ -17,10 +17,11 @@ class Menu(models.Model):
         return "<{} with {} recipes>".format(self.name, self.recipes.count())
 
     def shopping_list(self):
+        print(self)
+        print('-'*len(self.name))
         shop = defaultdict(float)
         for recipe in self.recipes.all():
             scale = ceil(self.servings / recipe.servings)
-            print("Scaling {} by {}".format(recipe, scale))
             for ri in recipe.ingredients.all():
                 try:
                     shop[(ri.ingredient, ri.convert().unit)] = scale * ri.convert().quantity
@@ -50,4 +51,5 @@ class Menu(models.Model):
             for step in r.steps.all():
                 print("  - " + step.description)
                 
-        
+    class Meta:
+        ordering=['name']
