@@ -10,7 +10,7 @@ class Menu(models.Model):
     recipes = models.ManyToManyField(Recipe, related_name="menus")
     servings = models.IntegerField()
 
-    def __str__(self, width=80):
+    def __str__(self, width=70):
         wrapper = TextWrapper(width=width)
         listWrapper = TextWrapper(width=width, initial_indent=' - ', subsequent_indent='   ')
         text = []
