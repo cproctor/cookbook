@@ -14,9 +14,10 @@ A simple command-line Django app for managing recipes and menus.
 
 ## Usage
 
-Recipes are imported via YAML files--see examples in `recipe_sources`
-for the format. You imported all the recipes during installation with
-`import_recipes`; individual recipes can be imported with `import_recipe`.
+Recipes are imported via YAML files storied in `recipe_sources`. 
+You imported the built-in the recipes during installation with
+`import_recipes`. Individual recipes can later be imported with 
+`import_recipe`.
 
 List all the recipes (add `--help` to see
 options you can use to filter the view):
