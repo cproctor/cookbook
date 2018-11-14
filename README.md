@@ -40,7 +40,7 @@ friends over on Thursday and we want to have turnips and ice cream.
 
     Thursday dinner
     ===============
-    for 10
+    to serve 10
     - 2 * Ice Cream
     - 3 * Miso Roasted Japanese Turnips
 
