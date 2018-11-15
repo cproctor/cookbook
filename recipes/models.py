@@ -2,11 +2,15 @@ from django.db import models
 from django.db.models import Q
 from collections import deque
 
+class RecipeTag(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+
 class Recipe(models.Model):
     name = models.CharField(max_length=200)
     source = models.URLField()
     servings = models.IntegerField()
     notes = models.TextField(blank=True, null=True)
+    tags = models.ManyToManyField(RecipeTag, related_name='recipes')
 
     def __str__(self):
         return self.name

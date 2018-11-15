@@ -2,7 +2,7 @@
 
 import yaml
 import logging
-from recipes.models import Recipe, Ingredient, RecipeIngredient, IngredientUnit
+from recipes.models import Recipe, Ingredient, RecipeIngredient, IngredientUnit, RecipeTag
 
 def get_logger(logName, fileName, level):
     "Gets a preconfigured logger"
@@ -30,7 +30,7 @@ class RecipeImporter:
     }
     """
     def __init__(self, log=None):
-        self.log = log or get_logger(__file__, "recipe_importer.log", logging.DEBUG)
+        self.log = log or get_logger(__file__, "recipe_importer.log", logging.WARNING)
 
     def import_recipe(self, data):
         self.r = Recipe(
@@ -46,6 +46,9 @@ class RecipeImporter:
             self.log.debug(" - Step: {}".format(step))
         for i in data['ingredients']:
             self.import_ingredient(*i)
+        for tagName in data.get('tags', []):
+            tag, _ = RecipeTag.objects.get_or_create(name=tagName)
+            self.r.tags.add(tag)
 
     def import_ingredient(self, quantity, unit, name, notes=None):
         "Parses a string as a RecipeIngredient"
