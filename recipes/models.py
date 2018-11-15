@@ -17,7 +17,7 @@ class Recipe(models.Model):
         try:       
             return Recipe.objects.get(name__contains=name)
         except Recipe.DoesNotExist:
-            raise RecipeDoesNotExist("No recipe found with name '{}'".format(name))
+            raise Recipe.DoesNotExist("No recipe found with name '{}'".format(name))
         except Recipe.MultipleObjectsReturned:
             raise Recipe.MultipleObjectsReturned("More than one recipe found with name '{}'".format(name))
 

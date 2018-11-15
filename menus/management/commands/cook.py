@@ -27,7 +27,7 @@ class Command(BaseCommand):
                 recipes = [Recipe.get_by_name(name) for name in options['recipes']]
             except (Recipe.DoesNotExist, Recipe.MultipleObjectsReturned) as e:
                 raise CommandError(e)
-            tempMenu = Menu(name="Menu", servings=options['servings'])
+            tempMenu = Menu(name="Menu", servings=options['servings'] or 1)
             tempMenu.save()
             tempMenu.recipes.set(recipes)
             tempMenu.cooking_view()
