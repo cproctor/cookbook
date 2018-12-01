@@ -4,6 +4,20 @@ import yaml
 import logging
 from recipes.models import Recipe, Ingredient, RecipeIngredient, IngredientUnit, RecipeTag
 
+def get_log_level(name):
+    levels = {
+        "debug": logging.DEBUG,
+        "info": logging.INFO,
+        "warning": logging.WARNING,
+        "error": logging.ERROR
+    }
+    try:
+        return levels[name]
+    except KeyError:
+        raise ValueError("Invalid log level name {}. Choose one of {}.".format(
+            name, ", ".join(levels.keys())
+        ))
+
 def get_logger(logName, fileName, level):
     "Gets a preconfigured logger"
     log = logging.getLogger(logName)
