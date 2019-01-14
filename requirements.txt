@@ -5,6 +5,6 @@ django-distill==1.6
 future==0.17.1
 idna==2.7
 pytz==2018.7
-PyYAML==3.13
+PyYAML==4.2b4
 requests==2.20.0
 urllib3==1.24
