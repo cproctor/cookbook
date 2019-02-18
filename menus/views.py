@@ -7,3 +7,7 @@ class IndexView(generic.ListView):
     model = Menu
     template_name = 'menus/index.html'
     context_object_name = 'menus'
+
+class DetailView(generic.DetailView):
+    model = Menu
+    template_name = 'menus/detail.html'

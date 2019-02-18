@@ -18,7 +18,7 @@ class Recipe(models.Model):
     @classmethod
     def get_by_name(self, name):
         "Looks up a recipe by fuzzy-matched name, handling errors with informative messages"
-        try:       
+        try:
             return Recipe.objects.get(name__contains=name)
         except Recipe.DoesNotExist:
             raise Recipe.DoesNotExist("No recipe found with name '{}'".format(name))
@@ -76,22 +76,22 @@ class IngredientUnit(models.Model):
         while any(edges):
             unit = edges.popleft()
             newConversions = unit.conversions.filter(
-                (Q(allowed_ingredients=None) | 
+                (Q(allowed_ingredients=None) |
                 Q(allowed_ingredients=ingredient)) &
                 ~Q(target_id__in=[c.id for c in result.keys()])
             ).all()
             for conv in newConversions:
                 result[conv.target] = result[unit] * conv.scale
-                if conv.target not in edges: 
+                if conv.target not in edges:
                     edges.append(conv.target)
         del result[self]
         return result
-        
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
-    category = models.ForeignKey(IngredientCategory, related_name='ingredients', 
+    category = models.ForeignKey(IngredientCategory, related_name='ingredients',
             null=True, blank=True, on_delete=models.CASCADE)
-    canonicalUnit = models.ForeignKey(IngredientUnit, on_delete=models.CASCADE, 
+    canonicalUnit = models.ForeignKey(IngredientUnit, on_delete=models.CASCADE,
             null=True, blank=True)
     recipes=models.ManyToManyField(Recipe, through='RecipeIngredient', through_fields=('ingredient', 'recipe'))
 
