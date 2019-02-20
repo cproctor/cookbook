@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" href="{% static 'style/main.css'%}">
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav id="menu">
+            THIS PART IS DEFINED IN COOKBOOK/BASE.HTML, SO IT'S CONSISTENT ACROSS PAGES. 
+            COULD BE A GOOD PLACE FOR A MENU...
+        </nav>
+        <div id="content">
+            {% block content %}
+                NO CONTENT DEFINED. (THIS IS A PLACEHOLDER.)
+            {% endblock %}
+        </div>
+        <footer>
+            AND THIS IS THE FOOTER.
+        </footer>
+    </body>
+
+</html>

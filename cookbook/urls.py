@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from recipes import views as recipe_views
 from menus import views as menu_views
+from cookbook import views as cookbook_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', cookbook_views.HomeView.as_view(), name='home'),
     path('cookbook/recipes', recipe_views.IndexView.as_view(), name='recipe_index'),
     path('cookbook/recipes/<int:pk>', recipe_views.DetailView.as_view(), name='recipe_detail'),
     path('cookbook/menus', menu_views.IndexView.as_view(), name='menu_index'),

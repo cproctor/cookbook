@@ -1,0 +1,15 @@
+{% extends 'cookbook/base.html' %}
+
+{% if any(recipes) %}
+    <h1>All recipes</h1>
+    <p>Happy cooking! Here are all your recipes.</p>
+    <ul>
+    {% for recipe in recipes %}
+        <li><a href="{% url 'recipe_detail' recipe.id %}">{{recipe.name}}</a></li>
+    {% endfor %}
+    </ul>
+
+{% else %}
+    <h1>No recipes.</h1>
+    <p> You might want to import some. Cookbooks aren't much good without recipes.</p>
+{% endif %}
