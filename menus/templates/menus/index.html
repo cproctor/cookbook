@@ -1,0 +1,17 @@
+<h1>Menus</h1>
+{% if menus %}
+  <ul>
+    {% for menu in menus %}
+      <li>
+        
+        <ul>
+          {% for recipe in menu.recipes.all %}
+            <li>{{ recipe.name }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No menus are available.</p>
+{% endif %}

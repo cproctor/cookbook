@@ -1,0 +1,12 @@
+<h1>{{ menu.name }}</h1>
+{% if menu.recipes %}
+  <ul>
+    {% for recipe in menu.recipes.all %}
+      <li>
+        <p><a href=href="{% url 'recipe_detail' recipe.id %}">{{ recipe.name }}</a>, <strong>{{ recipe.servings }} servings</strong></p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No recipes are assigned.</p>
+{% endif %}

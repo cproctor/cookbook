@@ -1,0 +1,12 @@
+<h1>All Recipes</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% if recipes %}
+  <ul>
+    {% for recipe in recipes.all %}
+      <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No recipes are available.</p>
+{% endif %}
