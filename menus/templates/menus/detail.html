@@ -3,7 +3,8 @@
   <ul>
     {% for recipe in menu.recipes.all %}
       <li>
-        <p><a href=href="{% url 'recipe_detail' recipe.id %}">{{ recipe.name }}</a>, <strong>{{ recipe.servings }} servings</strong></p>
+        <p>{{ recipe.name }}, <strong>{{ recipe.servings }} servings</strong></p>
+        <button><a href=href="{% url 'recipe_detail' recipe.id %}">View recipe</a></button>
       </li>
     {% endfor %}
   </ul>
