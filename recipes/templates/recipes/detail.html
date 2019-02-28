@@ -1,3 +1,6 @@
+{% extends 'cookbook/base.html' %}
+
+{% block content %}
 <h1>{{ recipe.name }}</h1>
 {% if recipe.servings %}
   <h3>Serves {{ recipe.servings }} people.</h3>
@@ -28,3 +31,5 @@
 {% else %}
   <p>No steps are assigned. Toss them all together!</p>
 {% endif %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'cookbook/base.html' %}
+
+{% block content %}
+<h1>Cookbook</h1>
+<ul>
+    <li><a href="{% url 'recipe_index' %}">Recipes</a></li>
+    <li><a href="{% url 'menu_index' %}">Menus</a></li>
+</ul>
+{% endblock %}
