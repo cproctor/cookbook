@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Q
 from collections import deque
+import re
 
 class RecipeTag(models.Model):
     name = models.CharField(max_length=200, unique=True)
@@ -133,6 +134,17 @@ class RecipeIngredient(models.Model):
 class RecipeStep(models.Model):
     recipe = models.ForeignKey(Recipe, related_name="steps", on_delete=models.CASCADE)
     description = models.TextField()
+
+    def scaled_description(self, scale):
+        pattern = "\{([^,]+),([^,]+),([^,]+)\}"
+        step = self.description
+        while True:
+            m = re.search(pattern, step)
+            if not m:
+                break
+            qty, unit, ing = m.groups()
+            step = re.sub(pattern, "{} {} {}".format(float(qty) * scale, unit.strip(), ing.strip()), step)
+        return step
 
     def __str__(self):
         return self.description

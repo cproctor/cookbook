@@ -72,10 +72,11 @@ class Menu(models.Model):
                     ' (' + ri.notes + ')' if ri.notes else ''
                 ))
         for r in self.recipes.all():
+            scale = ceil(self.servings / r.servings)
             text.append('-'*width)
             text += wrapper.wrap(r.name)
             for step in r.steps.all():
-                text += listWrapper.wrap(step.description)
+                text += listWrapper.wrap(step.scaled_description(scale))
         for line in text:
             print(line)
                 
