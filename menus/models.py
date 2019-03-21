@@ -30,19 +30,28 @@ class Menu(models.Model):
         text = []
         text.append(self.__str__(width))
         text.append('-'*width)
+        for (ing, unit), qty in self.get_shopping_items().items():
+            text += listWrapper.wrap("{} {} of {}".format(qty, unit, ing))
+        for line in text:
+            print(line)
+
+    def shopping_csv(self):
+        "Prints a shopping list as a CSV"
+        print("ingredient,unit,quantity")
+        for (ing, unit), qty in self.get_shopping_items().items():
+            print("{},{},{}".format(ing, unit, qty))
+
+    def get_shopping_items(self):
+        "Returns a dict of shopping items"
         shop = defaultdict(float)
         for recipe in self.recipes.all():
             scale = ceil(self.servings / recipe.servings)
             for ri in recipe.ingredients.all():
-                print(ri, scale)
                 try:
                     shop[(ri.ingredient, ri.convert().unit)] += scale * ri.convert().quantity
                 except ValueError:
                     shop[(ri.ingredient, ri.unit)] += scale * ri.quantity
-        for (ing, unit), qty in shop.items():
-            text += listWrapper.wrap("{} {} of {}".format(qty, unit, ing))
-        for line in text:
-            print(line)
+        return shop
 
     def cooking_view(self, width=70):
         wrapper = TextWrapper(width=width)
