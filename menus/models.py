@@ -34,10 +34,11 @@ class Menu(models.Model):
         for recipe in self.recipes.all():
             scale = ceil(self.servings / recipe.servings)
             for ri in recipe.ingredients.all():
+                print(ri, scale)
                 try:
-                    shop[(ri.ingredient, ri.convert().unit)] = scale * ri.convert().quantity
+                    shop[(ri.ingredient, ri.convert().unit)] += scale * ri.convert().quantity
                 except ValueError:
-                    shop[(ri.ingredient, ri.unit)] = scale * ri.quantity
+                    shop[(ri.ingredient, ri.unit)] += scale * ri.quantity
         for (ing, unit), qty in shop.items():
             text += listWrapper.wrap("{} {} of {}".format(qty, unit, ing))
         for line in text:
