@@ -1,0 +1,17 @@
+name: Crepes
+source: https://www.allrecipes.com/recipe/16383/basic-crepes/
+servings: 6
+tags:
+ - breakfast
+notes: []
+ingredients:
+ - [1, c, flour]
+ - [2, ct, egg]
+ - [0.5, c, milk]
+ - [0.5, c, water]
+ - [0.25, t, salt]
+ - [2, t, butter]
+steps:
+ - Blend all ingredients.
+ - Cook.
+
