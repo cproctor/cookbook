@@ -1,13 +1,19 @@
+{% extends 'cookbook/base.html' %}
+
+{% block content %}
+
 <h1>{{ menu.name }}</h1>
 {% if menu.recipes %}
   <ul>
     {% for recipe in menu.recipes.all %}
       <li>
-        <p>{{ recipe.name }}, <strong>{{ recipe.servings }} servings</strong></p>
-        <button><a href=href="{% url 'recipe_detail' recipe.id %}">View recipe</a></button>
+        <p>
+          <a href="{% url 'menu_recipe_detail' menu.id recipe.id %}">{{ recipe.name }}</a>, <strong>{{ recipe.servings }} servings</strong>
+        </p>
       </li>
     {% endfor %}
   </ul>
 {% else %}
   <p>No recipes are assigned.</p>
 {% endif %}
+{% endblock %}

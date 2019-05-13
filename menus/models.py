@@ -68,6 +68,7 @@ class Menu(models.Model):
                 text += listWrapper.wrap(step.description)
         for line in text:
             print(line)
-                
+
+
     class Meta:
         ordering=['name']

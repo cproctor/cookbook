@@ -11,3 +11,7 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Menu
     template_name = 'menus/detail.html'
+
+class MenuRecipeDetailView(generic.DetailView):
+    model = Menu
+    template_name = 'menus/MenuRecipeDetail.html'
