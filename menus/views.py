@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from menus.models import Menu
+from django.http import Http404
 
 # Create your views here.
 class IndexView(generic.ListView):

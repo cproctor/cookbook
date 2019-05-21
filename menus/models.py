@@ -30,18 +30,28 @@ class Menu(models.Model):
         text = []
         text.append(self.__str__(width))
         text.append('-'*width)
+        for (ing, unit), qty in self.get_shopping_items().items():
+            text += listWrapper.wrap("{} {} of {}".format(qty, unit, ing))
+        for line in text:
+            print(line)
+
+    def shopping_csv(self):
+        "Prints a shopping list as a CSV"
+        print("ingredient,unit,quantity")
+        for (ing, unit), qty in self.get_shopping_items().items():
+            print("{},{},{}".format(ing, unit, qty))
+
+    def get_shopping_items(self):
+        "Returns a dict of shopping items"
         shop = defaultdict(float)
         for recipe in self.recipes.all():
             scale = ceil(self.servings / recipe.servings)
             for ri in recipe.ingredients.all():
                 try:
-                    shop[(ri.ingredient, ri.convert().unit)] = scale * ri.convert().quantity
+                    shop[(ri.ingredient, ri.convert().unit)] += scale * ri.convert().quantity
                 except ValueError:
-                    shop[(ri.ingredient, ri.unit)] = scale * ri.quantity
-        for (ing, unit), qty in shop.items():
-            text += listWrapper.wrap("{} {} of {}".format(qty, unit, ing))
-        for line in text:
-            print(line)
+                    shop[(ri.ingredient, ri.unit)] += scale * ri.quantity
+        return shop
 
     def cooking_view(self, width=70):
         wrapper = TextWrapper(width=width)
@@ -62,10 +72,11 @@ class Menu(models.Model):
                     ' (' + ri.notes + ')' if ri.notes else ''
                 ))
         for r in self.recipes.all():
+            scale = ceil(self.servings / r.servings)
             text.append('-'*width)
             text += wrapper.wrap(r.name)
             for step in r.steps.all():
-                text += listWrapper.wrap(step.description)
+                text += listWrapper.wrap(step.scaled_description(scale))
         for line in text:
             print(line)
 

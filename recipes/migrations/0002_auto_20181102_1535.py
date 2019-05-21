@@ -24,7 +24,9 @@ def add_units(apps, schema_editor):
         ('inch', 'in'), # Ginger, etc.
         ('can', 'can'),
         ('stalk', 'stalk'),
-        ('pinch', 'pinch')
+        ('pinch', 'pinch'), 
+
+        ('milliliter', 'ml')
         
     ]
     for name, short in ingredients:

@@ -1,0 +1,38 @@
+{% extends 'cookbook/base.html' %}
+
+{% block content %}
+<h1>{{ recipe.name }}</h1>
+
+(Part of <a href="{% url 'menu_detail' menu.id %}">{{menu.name}}</a>)
+
+{% if recipe.servings %}
+  <h3>Serves {{ recipe.servings }} people.</h3>
+{% endif %}
+
+<h4>INGREDIENTS</h4>
+{% if recipe.ingredients %}
+  <ul>
+    {% for ingredient in recipe.ingredients.all %}
+      <li>
+        {{ ingredient }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No ingredients are assigned.</p>
+{% endif %}
+
+<h4>STEPS</h4>
+{% if recipe.steps %}
+  <ul>
+    <ol>
+      {% for step in recipe.steps.all %}
+        <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+  </ul>
+{% else %}
+  <p>No steps are assigned. Toss them all together!</p>
+{% endif %}
+
+{% endblock %}
