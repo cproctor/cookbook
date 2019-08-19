@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Q
 from collections import deque
+from recipes.helpers import choose_from_options
 import re
 
 class RecipeTag(models.Model):
@@ -17,14 +18,19 @@ class Recipe(models.Model):
         return self.name
 
     @classmethod
-    def get_by_name(self, name):
+    def get_by_name(self, name, ask_which=False):
         "Looks up a recipe by fuzzy-matched name, handling errors with informative messages"
         try:
             return Recipe.objects.get(name__contains=name)
         except Recipe.DoesNotExist:
             raise Recipe.DoesNotExist("No recipe found with name '{}'".format(name))
         except Recipe.MultipleObjectsReturned:
-            raise Recipe.MultipleObjectsReturned("More than one recipe found with name '{}'".format(name))
+            if ask_which:
+                prompt = f"Multiple recipes matched '{name}'. Which did you mean?"
+                matches = Recipe.objects.filter(name__contains=name).all()
+                return choose_from_options(matches, [r.name for r in matches], prompt)
+            else:
+                raise Recipe.MultipleObjectsReturned("More than one recipe found with name '{}'".format(name))
 
     class Meta:
         ordering=['name']

@@ -15,8 +15,8 @@ class Command(BaseCommand):
             menu = Menu(name=options['name'], servings=options['servings'])
             menu.save()
             for recipe_name in options['recipes']:
-                menu.recipes.add(Recipe.objects.get(name__contains=recipe_name))
-        except Recipe.DoesNotExist:
+                menu.recipes.add(Recipe.get_by_name(recipe_name))
+        except (Recipe.DoesNotExist, Recipe.MultipleObjectsReturned):
             menu.delete()
             raise CommandError("No recipe with name '{}'".format(recipe_name))
         except Recipe.MultipleObjectsReturned:
