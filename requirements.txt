@@ -1,12 +1,13 @@
 certifi==2018.10.15
 chardet==3.0.4
-Django==2.1.7
+Django==2.2.6
 django-distill==1.6
 django-extensions==2.1.6
 future==0.17.1
 idna==2.7
 pytz==2018.7
 PyYAML==4.2b4
-requests==2.20.0
+requests==2.22.0
 six==1.12.0
-urllib3==1.24
+sqlparse==0.3.0
+urllib3==1.25.6
