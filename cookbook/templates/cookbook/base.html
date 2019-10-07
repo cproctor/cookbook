@@ -8,12 +8,11 @@
     </head>
     <body>
         <nav id="menu">
-            <img src="{% static 'pasta.jpg' %}" width="80px">
-            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'home' %}"><img src="{% static 'cookbook_icon.png' %}" height="50px"></a>
         </nav>
         <div id="content">
             {% block content %}
-                NO CONTENT DEFINED. (THIS IS A PLACEHOLDER.)
+              NO CONTENT DEFINED. (THIS IS A PLACEHOLDER.)
             {% endblock %}
         </div>
         <footer>

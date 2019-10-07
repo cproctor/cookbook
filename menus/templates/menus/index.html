@@ -16,6 +16,6 @@
     {% endfor %}
   </ul>
 {% else %}
-  <p>No menus are available.</p>
+  <p>No menus are available. Try going <a href="{% url 'home' %}">home</a>.</p>
 {% endif %}
 {% endblock %}
