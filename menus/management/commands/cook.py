@@ -5,12 +5,13 @@ from recipes.models import Recipe
 from menus.models import Menu
 
 class Command(BaseCommand):
-    help = "Display a shopping list for a menu. Provide a menu name or list the recipes"
+    help = "Display a cook view for a menu. Provide a menu name or list the recipes"
 
     def add_arguments(self, parser):
         parser.add_argument("menu", nargs='?', help="Name of menu (fuzzy match)")
         parser.add_argument("-r", "--recipes", nargs="*", help="Names of recipes (fuzzy match)")
         parser.add_argument("-s", "--servings", type=int, help="Number of people to serve")
+        parser.add_argument("-f", "--format", choices=["markdown"], help="Output format")
 
     def handle(self, *args, **options):
         if not options['menu'] and not options['recipes']:
@@ -21,7 +22,7 @@ class Command(BaseCommand):
             menu = Menu.objects.get(name__contains=options['menu'])
             if options['servings']:
                 menu.servings = options['servings']
-            menu.cooking_view()
+            menu.cooking_view(format=options['format'])
         else:
             try:
                 recipes = [Recipe.get_by_name(name, ask_which=True) for name in options['recipes']]
@@ -30,6 +31,6 @@ class Command(BaseCommand):
             tempMenu = Menu(name="Menu", servings=options['servings'] or 1)
             tempMenu.save()
             tempMenu.recipes.set(recipes)
-            tempMenu.cooking_view()
+            tempMenu.cooking_view(format=options['format'])
             tempMenu.delete()
 
