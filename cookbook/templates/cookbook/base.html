@@ -9,6 +9,8 @@
     <body>
         <nav id="menu">
             <a href="{% url 'home' %}"><img src="{% static 'cookbook_icon.png' %}" height="50px"></a>
+            <a href="{% url 'recipe_index' %}">Recipes</a>
+            <a href="{% url 'menu_index' %}">Menus</a>
         </nav>
         <div id="content">
             {% block content %}
