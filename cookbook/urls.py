@@ -20,6 +20,7 @@ from menus import views as menu_views
 from cookbook import views as cookbook_views
 
 urlpatterns = [
+    path('', cookbook_views.HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('cookbook/', cookbook_views.HomeView.as_view(), name='home'),
     path('cookbook/recipes', recipe_views.IndexView.as_view(), name='recipe_index'),
