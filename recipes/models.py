@@ -13,6 +13,7 @@ class Recipe(models.Model):
     servings = models.IntegerField()
     notes = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(RecipeTag, related_name='recipes')
+    stepsAndIngredients = models.CharField(max_length=5000)
 
     def __str__(self):
         return self.name

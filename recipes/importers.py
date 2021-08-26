@@ -51,13 +51,15 @@ class RecipeImporter:
             name=data['name'],
             source=data['source'],
             servings=data['servings'],
-            notes=data.get('notes')
+            notes=data.get('notes'),
         )
         self.r.save()
         self.log.info("Created recipe {}".format(self.r))
+        counter = 1
         for s in data['steps']:
-            step = self.r.steps.create(description=s)
-            self.log.debug(" - Step: {}".format(step))
+            self.r.stepsAndIngredients += str(counter) + ". " + str(s)
+            counter += 1
+            self.r.save()
         for i in data['ingredients']:
             self.import_ingredient(*i)
         for tagName in data.get('tags', []):
@@ -81,6 +83,8 @@ class RecipeImporter:
             quantity = quantity,
             notes = notes
         )
+        self.r.stepsAndIngredients += "|" + str(ingredient) + "|" + str(ingUnit) + "|" + str(quantity) + "|" + str(notes) 
+        self.r.save()
         self.log.info("Added {}".format(ri))
 
 class YAMLRecipeImporter(RecipeImporter):
