@@ -6,7 +6,7 @@ django-extensions==2.1.6
 future==0.17.1
 idna==2.7
 pytz==2018.7
-PyYAML==4.2b4
+PyYAML==5.4
 requests==2.22.0
 six==1.12.0
 sqlparse==0.3.0
