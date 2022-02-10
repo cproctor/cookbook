@@ -1,6 +1,6 @@
 certifi==2018.10.15
 chardet==3.0.4
-Django==2.2.6
+Django==2.2.27
 django-distill==1.6
 django-extensions==2.1.6
 future==0.17.1
